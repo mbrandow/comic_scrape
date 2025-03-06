@@ -3,7 +3,7 @@ import cloudscraper
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# Create a cloudscraper session to bypass Cloudflare
+# Create a cloudscraper session to bypass Cloudflare.
 scraper = cloudscraper.create_scraper()
 
 # URL to scrape
