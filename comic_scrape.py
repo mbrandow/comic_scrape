@@ -38,9 +38,9 @@ for page in range(1, 61):
                 order = row.find("div", {"class": "list_detail_order_block"}).text.strip() if row.find("div", {"class": "list_detail_order_block"}) else ""
                 published = row.find("div", {"class": "list_detail_publish_block"}).text.strip() if row.find("div", {"class": "list_detail_publish_block"}) else ""
                 title = row.find("div", {"class": "list_detail_title_block"}).text.strip() if row.find("div", {"class": "list_detail_title_block"}) else ""
-
+                arc = row.find("div", {"class": "list_detail_arc_block"}).text.strip() if row.find("div", {"class": "list_detail_arc_block"}) else ""
                 # Append the extracted data to the list
-                all_data.append([order, published, title])
+                all_data.append([order, title, published, arc])
 
         else:
             print(f"Container with class 'full_width_container_centered' not found on page {page}.")
@@ -56,7 +56,7 @@ for page in range(1, 61):
 
 # After all pages are scraped, save the data to a CSV file
 if all_data:
-    columns = ["Order", "Published", "Title"]
+    columns = ["Order", "Title", "Published", "Story Arc"]
     df = pd.DataFrame(all_data, columns=columns)
     df.to_csv(OUTPUT_FILE, index=False)
     print(f"Data saved to {OUTPUT_FILE}")
